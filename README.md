@@ -4,7 +4,7 @@
 
 [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.22958447.svg)](https://doi.org/10.5281/zenodo.22958447)
 
-**[Read the thesis (PDF)](Pablo-Ramon-Muro_Thesis-Physics_Dynamical-Dark-Energy-DESI.pdf)** · **[Defence slides (PDF)](Pablo-Ramon-Muro_BSc-Thesis_Defence-Slides.pdf)** · both in Spanish
+**[Read the thesis (PDF)](Pablo-Ramon-Muro_Thesis-Physics_Dynamical-Dark-Energy-DESI.pdf)** · **[Defence slides (PDF)](Pablo-Ramon-Muro_BSc-Thesis_Defence-Slides.pdf.pdf)** · both in Spanish
 
 Does the universe need a cosmological constant, or is dark energy something that changes with
 time? The 2024 and 2025 data releases of the DESI collaboration reopened that question. This
