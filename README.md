@@ -4,8 +4,7 @@
 
 [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.22958447.svg)](https://doi.org/10.5281/zenodo.22958447)
 
-**[Read the thesis (PDF)](Pablo-Ramon-Muro_Thesis-Physics_Dynamical-Dark-Energy-DESI.pdf)** · **[Defence slides (PDF)](Pablo-Ramon-Muro_BSc-Thesis_Defence-Slides.pdf.pdf)** · both in Spanish
-
+**[Download the thesis (PDF)](https://github.com/Pablo-Ramon-Muro/dynamical-dark-energy-desi/raw/main/Pablo-Ramon-Muro_BSc-Thesis_Dynamical-Dark-Energy-DESI.pdf)** · **[Download the defence slides (PDF)](https://github.com/Pablo-Ramon-Muro/dynamical-dark-energy-desi/raw/main/Pablo-Ramon-Muro_BSc-Thesis_Defence-Slides.pdf)** · both in Spanish
 Does the universe need a cosmological constant, or is dark energy something that changes with
 time? The 2024 and 2025 data releases of the DESI collaboration reopened that question. This
 thesis answers it by fitting the $w_0w_a\mathrm{CDM}$ model to the public DESI DR2 measurements
