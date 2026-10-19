@@ -9,6 +9,6 @@ authors:
     affiliation: Universitat de València
 repository-code: "https://github.com/Pablo-Ramon-Muro/dynamical-dark-energy-desi"
 license: MIT
-version: v1.0.3
-date-released: "2026-09-25"
+version: v1.1.0
+date-released: "2026-10-19"
 doi: 10.5281/zenodo.22958447
