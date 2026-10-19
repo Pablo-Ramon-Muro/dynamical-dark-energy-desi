@@ -4,7 +4,12 @@
 
 [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.22958447.svg)](https://doi.org/10.5281/zenodo.22958447)
 
-Code and data analysis for my Bachelor's Thesis (*Trabajo de Fin de Grado*) in Physics at the Universitat de València.
+**[Read the thesis (PDF)](Pablo-Ramon-Muro_BSc-Thesis_Dynamical-Dark-Energy-DESI.pdf)** · **[Defence slides (PDF)](Pablo-Ramon-Muro_BSc-Thesis_Defence-Slides.pdf)** · both in Spanish
+
+Does the universe need a cosmological constant, or is dark energy something that changes with
+time? The 2024 and 2025 data releases of the DESI collaboration reopened that question. This
+thesis answers it by fitting the $w_0w_a\mathrm{CDM}$ model to the public DESI DR2 measurements
+and measuring how far the fit sits from $\Lambda\mathrm{CDM}$.
 
 * **Title:** *Dynamical Dark Energy and the Results of the DESI Collaboration* (*Energía Oscura Dinámica y los resultados de la Colaboración DESI*)
 * **Author:** Pablo Ramón Muro
@@ -12,32 +17,73 @@ Code and data analysis for my Bachelor's Thesis (*Trabajo de Fin de Grado*) in P
 * **Degree:** Double Bachelor's Degree in Physics and Mathematics, Universitat de València
 * **Academic year:** 2026–2027
 
-> The written thesis is not included in this repository yet. It will be added once it has been formally submitted to the university.
+## Results at a glance
+
+![Confidence regions in the (w0, wa) plane](figures/G_Contornos_Solape_w0wa.png)
+
+The 68% and 95% confidence regions in the $(w_0,w_a)$ plane for the three dataset combinations.
+BAO alone leaves a long, almost flat degeneracy valley that still contains $\Lambda\mathrm{CDM}$, the point
+$(w_0,w_a)=(-1,0)$ marked in red. Adding the compressed CMB shrinks the region sharply and moves it
+into the quadrant $w_0>-1$, $w_a<0$, with $\Lambda\mathrm{CDM}$ now outside the 95% contour. Adding the
+compressed Pantheon+ supernovae tightens it further and brings it back towards $\Lambda\mathrm{CDM}$.
+
+![Significance against LCDM, this work against DESI DR2](figures/Significancia_vs_LCDM.png)
+
+How far the $w_0w_a\mathrm{CDM}$ fit sits from $\Lambda\mathrm{CDM}$, in sigmas, for each dataset
+combination, next to the values published by DESI. With BAO alone the two agree exactly, at
+$1.7\sigma$. Once the CMB enters, this work gives $2.2\sigma$ where DESI reports $3.1\sigma$, and
+$2.2\sigma$ against $2.8\sigma$ when the supernovae are added; that gap is the price of using the
+three-number compressed CMB likelihood instead of the full Planck one. DESI does not tabulate
+BAO + BBN on its own, hence the missing bar. Only DESI's own BAO + CMB combination crosses the
+$3\sigma$ line conventionally read as evidence.
+
+![H0 inferred from the six fits](figures/E_Tension_Hubble_H0.png)
+
+$H_0$ inferred from the six fits, three dataset combinations times two models, with the local SH0ES
+measurement and the Planck $\Lambda\mathrm{CDM}$ value as external anchors. The point of the figure is that
+what moves $H_0$ is the model, not the data: the three $\Lambda\mathrm{CDM}$ fits agree with each other, while
+opening up $(w_0,w_a)$ pulls the inferred $H_0$ down, except when the supernovae pin the
+parametrisation back near $\Lambda\mathrm{CDM}$.
 
 ## Overview
 
-This repository contains the three Wolfram Language scripts used to produce every numerical result and every figure of the thesis:
+This repository contains the three Wolfram Language scripts used to produce every numerical result
+and every figure of the thesis:
 
 1. the background evolution of a Friedmann–Lemaître–Robertson–Walker universe with different energy contents and a constant equation of state;
 2. the $\chi^2$ fit of the $w_0w_a\mathrm{CDM}$ model (dynamical dark energy in the CPL parametrisation) to the DESI DR2 data, combined with BBN, a compressed CMB likelihood and compressed Pantheon+ supernovae;
 3. the expansion history of the best-fit CPL cosmologies, compared with fiducial $\Lambda\mathrm{CDM}$.
 
-The scripts are self-contained: all the measurements that enter the fit are written explicitly inside the code, together with the reference of the paper they were taken from, so no external data files are needed.
+The scripts are self-contained: all the measurements that enter the fit are written explicitly
+inside the code, together with the reference of the paper they were taken from, so no external data
+files are needed.
 
 ## Requirements
 
 * Wolfram Mathematica 12.0 or later. Only built-in functions are used (`NDSolveValue`, `NMinimize`, `FindMinimum`, `NIntegrate`, `ContourPlot`, `Export`), so no package has to be installed.
 * No external datasets.
 
-The scripts are stored as plain-text `.wl` files so that they can be read directly on GitHub. To run one of them, open it with Mathematica (`File > Open`) and evaluate the whole notebook (`Evaluation > Evaluate Notebook`). Each script calls `SetDirectory[NotebookDirectory[]]` before exporting, so the PDF figures are written to the same folder as the script.
+The scripts are stored as plain-text `.wl` files so that they can be read directly on GitHub. To run
+one of them, open it with Mathematica (`File > Open`) and evaluate the whole notebook
+(`Evaluation > Evaluate Notebook`). Each script calls `SetDirectory[NotebookDirectory[]]` before
+exporting, so the figures are written to the same folder as the script.
 
 ## Repository structure
 
+The PDF of the thesis and the defence slides are at the root of the repository, next to the three
+scripts described below. The `figures/` folder holds the PNG versions of the three figures shown
+above.
+
 ### `plots_DE_with_w_const.wl`
 
-Background cosmology with a constant equation of state. It defines $E(z)=H(z)/H_0$, the deceleration parameter $q(z)$ and the cosmological distances for a fiducial $\Lambda\mathrm{CDM}$ model ($\Omega_M=0.31$, $\Omega_r=9\times10^{-5}$, $h=0.7$), and compares it with three limiting universes: Einstein–de Sitter, open and de Sitter.
+Background cosmology with a constant equation of state. It defines $E(z)=H(z)/H_0$, the deceleration
+parameter $q(z)$ and the cosmological distances for a fiducial $\Lambda\mathrm{CDM}$ model ($\Omega_M=0.31$,
+$\Omega_r=9\times10^{-5}$, $h=0.7$), and compares it with three limiting universes: Einstein–de
+Sitter, open and de Sitter.
 
-It prints the characteristic numbers of the fiducial model (the matter–radiation and matter–$\Lambda$ equalities, the redshift at which the expansion starts to accelerate, $q_0$ and the age of the universe) and exports six figures:
+It prints the characteristic numbers of the fiducial model (the matter–radiation and
+matter–$\Lambda$ equalities, the redshift at which the expansion starts to accelerate, $q_0$ and the
+age of the universe) and exports six figures:
 
 | File | Content |
 | --- | --- |
@@ -50,15 +96,19 @@ It prints the characteristic numbers of the fiducial model (the matter–radiati
 
 ### `DESI_fit.wl`
 
-Fit of the $w_0w_a\mathrm{CDM}$ model (CPL parametrisation $w(a)=w_0+w_a(1-a)$) to the DESI DR2 data in four combinations: BAO alone, BAO + BBN, BAO + CMB (compressed) and BAO + CMB + SNe (compressed Pantheon+). For each combination the script obtains:
+Fit of the $w_0w_a\mathrm{CDM}$ model (CPL parametrisation $w(a)=w_0+w_a(1-a)$) to the DESI DR2 data
+in four combinations: BAO alone, BAO + BBN, BAO + CMB (compressed) and BAO + CMB + SNe (compressed
+Pantheon+). For each combination the script obtains:
 
 * the best fit, that is, the minimum of $\chi^2$ and the parameters that reach it;
 * the confidence region in the $(w_0,w_a)$ plane, built by profiling the remaining parameters;
 * the position of $\Lambda\mathrm{CDM}$ inside that region and its exact confidence level (in sigmas and in % CL);
-* the significance of $w_0w_a\mathrm{CDM}$ against $\Lambda$CDM, $\Delta\chi^2_{\mathrm{MAP}}\to\sigma$;
+* the significance of $w_0w_a\mathrm{CDM}$ against $\Lambda\mathrm{CDM}$, $\Delta\chi^2_{\mathrm{MAP}}\to\sigma$;
 * the $1\sigma$ uncertainty of every parameter, obtained from the curvature of its one-dimensional profile.
 
-It prints three tables (the parameters of the $\Lambda\mathrm{CDM}$ fits, the parameters of the $w_0w_a\mathrm{CDM}$ fits and the significances, all of them compared with the published DESI values) and exports seven figures:
+It prints three tables (the parameters of the $\Lambda\mathrm{CDM}$ fits, the parameters of the
+$w_0w_a\mathrm{CDM}$ fits and the significances, all of them compared with the published DESI values)
+and exports seven figures:
 
 | File | Content |
 | --- | --- |
@@ -72,9 +122,12 @@ It prints three tables (the parameters of the $\Lambda\mathrm{CDM}$ fits, the pa
 
 ### `plots_CPL.wl`
 
-Expansion history of the two best-fit CPL cosmologies obtained in `DESI_fit.wl`, compared with fiducial $\Lambda\mathrm{CDM}$. The best-fit parameters are isolated in a single block at the top of the file, so they can be updated if the fit changes.
+Expansion history of the two best-fit CPL cosmologies obtained in `DESI_fit.wl`, compared with
+fiducial $\Lambda\mathrm{CDM}$. The best-fit parameters are isolated in a single block at the top of the file,
+so they can be updated if the fit changes.
 
-It prints the age of the universe, the redshift at which the expansion starts to accelerate and $q_0$ for each of the three models, and exports seven figures:
+It prints the age of the universe, the redshift at which the expansion starts to accelerate and $q_0$
+for each of the three models, and exports seven figures:
 
 | File | Content |
 | --- | --- |
@@ -94,7 +147,9 @@ It prints the age of the universe, the redshift at which the expansion starts to
 | SNe Ia: 7 compressed measurements of $1/E(z)$ with their $7\times7$ covariance | Table II of [arXiv:2408.17318](https://arxiv.org/abs/2408.17318), a compression of the full Pantheon+ catalogue |
 | Reference values used for comparison | Eqs. (17), (19) and (24) and Tables 5 and VI of DESI DR2 |
 
-The fitted values are compared throughout with the ones published by DESI. The CMB likelihood used here is the compressed one (three numbers), not the full Planck likelihood, so the results are close to the published ones but not identical.
+The fitted values are compared throughout with the ones published by DESI. The CMB likelihood used
+here is the compressed one (three numbers), not the full Planck likelihood, so the results are close
+to the published ones but not identical.
 
 ## Notes
 
@@ -105,6 +160,10 @@ The fitted values are compared throughout with the ones published by DESI. The C
 
 The code in this repository is released under the MIT License (see [`LICENSE`](LICENSE)).
 
+The MIT License applies to the code only. The text and the figures of the thesis and of the defence
+slides are © Pablo Ramón Muro, all rights reserved, and are made available here for reading and
+citation.
+
 ## Contact
 
 Pablo Ramón Muro — [pramonmuro@gmail.com](mailto:pramonmuro@gmail.com) · [LinkedIn](https://linkedin.com/in/pramonmuro)
@@ -113,4 +172,11 @@ Pablo Ramón Muro — [pramonmuro@gmail.com](mailto:pramonmuro@gmail.com) · [Li
 
 ## Resumen (castellano)
 
-Este repositorio contiene los tres códigos de Wolfram Language utilizados en mi Trabajo de Fin de Grado en Física en la Universitat de València, *Energía Oscura Dinámica y los resultados de la Colaboración DESI*, dirigido por Juan Herrero García y Maximilian Berbig (IFIC, CSIC–UV). Con ellos se realiza el ajuste $\chi^2$ del modelo $w_0w_a\mathrm{CDM}$ a los datos públicos de DESI DR2 (BAO, BAO + BBN, BAO + CMB comprimido y BAO + CMB + SNe), se obtienen las regiones de confianza en el plano $(w_0,w_a)$ y la significancia frente a $\Lambda\mathrm{CDM}$, y se generan todas las figuras de la memoria. Cada archivo comienza con un resumen de lo que hace y los comentarios explican el origen físico y numérico de cada paso.
+Este repositorio contiene la memoria, la presentación de la defensa y los tres códigos de Wolfram
+Language de mi Trabajo de Fin de Grado en Física en la Universitat de València, *Energía Oscura
+Dinámica y los resultados de la Colaboración DESI*, dirigido por Juan Herrero García y Maximilian
+Berbig (IFIC, CSIC–UV). Con los códigos se realiza el ajuste $\chi^2$ del modelo
+$w_0w_a\mathrm{CDM}$ a los datos públicos de DESI DR2 (BAO, BAO + BBN, BAO + CMB comprimido y
+BAO + CMB + SNe), se obtienen las regiones de confianza en el plano $(w_0,w_a)$ y la significancia
+frente a $\Lambda\mathrm{CDM}$, y se generan todas las figuras de la memoria. Cada archivo comienza con un resumen
+de lo que hace y los comentarios explican el origen físico y numérico de cada paso.
